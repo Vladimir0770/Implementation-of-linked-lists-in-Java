@@ -6,13 +6,6 @@ package com.company.main.doubly_linked_list;
  * @author Volodymyr Khivrych
  * @param <E> the type of elements held in this collection
  */
-// TODO ask about implementation addNode and deleteNode, namely ask about how many implementation should be
-
-
-
-// TODO ask next : Can I have utils methods, or I have to stick to certain amount of methods;
-//  P.S. method addNode can delegates the call to method addFirst if the index == 0 ?
-//  The same about deleteNode, can it delegates the call to deleteLast or not ?
 
 public interface MyDoublyLinkedList<E> {
     /**

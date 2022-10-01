@@ -14,7 +14,6 @@ public interface MyDoublyLinkedList<E> {
      *
      * @param index position in the collection on which element will be inserted
      * @param e element to be inserted to this list
-     * @return {@code true} if collection has been changed after insertion
      * @throws NullPointerException if the specified element is null
      * and this collection does not permit null elements
      * @throws IllegalArgumentException if some property of this element
@@ -24,38 +23,32 @@ public interface MyDoublyLinkedList<E> {
      * @throws IndexOutOfBoundsException if the index is out of range
      * ({@code index < 0 || index > size()})
      */
-    boolean addNode(int index, E e);
+    void addNode(int index, E e);
 
     /**
      * Inserts an element as the last element in the list
      * @param e element to be appended to this list
-     * @return {@code true} if collection has been changed after insertion
      * @throws NullPointerException if the collection that calls this method is null
      * @throws IllegalArgumentException if some property of this element
      * prevents it from being added to this list
      * @throws ClassCastException if the class of the specified element
      * prevents it from being added to this list
      */
-    boolean addNode(E e);
+    void addNode(E e);
 
     /**
      *
-     * @param index the index of the element to be removed
-     * @return the element previously at the specified position
-     * @throws IndexOutOfBoundsException if the index is out of range
-     * ({@code index < 0 || index > size()})
+     * @param position of the node which must be removed
      * @throws NullPointerException if the collection that calls this method is null
      */
-    E deleteNode(int index);
+    void deleteNodeAtGivenPosition(int position);
 
     /**
      *
-     * @param index position in the collection on which element must be found
+     * @param e element in the collection which must be found
      * @return a found element from the collection
-     * @throws IndexOutOfBoundsException if the index is out of range
-     * ({@code index < 0 || index > size()})
      */
-    E search(int index);
+    E search(E e);
 
     /**
      *
@@ -83,7 +76,7 @@ public interface MyDoublyLinkedList<E> {
      *
      * @param e the element to add
      */
-    boolean addFirst(E e);
+    void addFirst(E e);
 
 
     // TODO create a Node generic class, but it's better to create directly in the class of Impl

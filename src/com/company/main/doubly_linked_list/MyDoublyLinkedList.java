@@ -78,7 +78,7 @@ public interface MyDoublyLinkedList<E> {
      */
     void addFirst(E e);
 
-
+    int getSize();
     // TODO create a Node generic class, but it's better to create directly in the class of Impl
     //  if it goes hard, look example in the java.util.LinkedList
 }

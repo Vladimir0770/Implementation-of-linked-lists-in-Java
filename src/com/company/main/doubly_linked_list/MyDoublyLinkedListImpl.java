@@ -2,7 +2,6 @@ package com.company.main.doubly_linked_list;
 
 public class MyDoublyLinkedListImpl<E> implements MyDoublyLinkedList<E> {
 
-    //TODO create method to add node at the end of the collection
     //TODO create method to add the node to specific position
 
     private Node<E> head;
@@ -19,7 +18,7 @@ public class MyDoublyLinkedListImpl<E> implements MyDoublyLinkedList<E> {
             this.head.prev = node;
             this.head = node;
         }
-        this.size++;
+        size++;
     }
 
     @Override
@@ -30,12 +29,28 @@ public class MyDoublyLinkedListImpl<E> implements MyDoublyLinkedList<E> {
             Node<E> current = head;
             Node<E> next = current.next;
             for (int i = 0; i < size; i++) {
-
-                if (index == i) {
-
-                }
+                next = getNodeUtil(index, e, next, i);
+            }
+        } else {
+            Node<E> current = tail;
+            Node<E> next = current.next;
+            for (int i = size; i > (size / 2); i--) {
+                next = getNodeUtil(index, e, next, i);
             }
         }
+        size++;
+    }
+
+    private Node<E> getNodeUtil(int index, E e, Node<E> next, int i) {
+        Node<E> current;
+        current = next.prev;
+        next = next.next;
+        if (index == i) {
+            Node<E> node = new Node<>(current, e, next);
+            next.prev = node;
+            current.next = node;
+        }
+        return next;
     }
 
     @Override
@@ -136,14 +151,8 @@ public class MyDoublyLinkedListImpl<E> implements MyDoublyLinkedList<E> {
         size = 0;
     }
 
-//    private void linkBefore(E e, Node<E> succ) {
-//        final Node<E> pred = succ.prev;
-//        final Node<E> newNode = new Node<>(pred, e, succ);
-//        succ.prev = newNode;
-//        if (pred == null)
-//            head = newNode;
-//        else
-//            pred.next = newNode;
-//        size++;
-//    }
+    @Override
+    public int getSize() {
+        return size;
+    }
 }

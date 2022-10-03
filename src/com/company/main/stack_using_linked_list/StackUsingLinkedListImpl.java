@@ -7,8 +7,7 @@ public class StackUsingLinkedListImpl<E> implements StackUsingLinkedList<E> {
 
     @Override
     public void push(E e) {
-        Node<E> node = new Node<>(e, top);
-        top = node;
+        top = new Node<>(e, top);
         size++;
     }
 

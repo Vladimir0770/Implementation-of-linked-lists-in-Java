@@ -20,11 +20,12 @@ public class Main {
 //        numbers.display();
 //        numbers.deleteNodeAtGivenPosition(numbers.getSize());
 //        numbers.display();
-
         StackUsingLinkedList<Integer> stack = new StackUsingLinkedListImpl<>();
         stack.push(1);
         stack.push(2);
         stack.push(3);
         stack.push(4);
+        System.out.println(stack.getSize());
+        stack.display();
     }
 }

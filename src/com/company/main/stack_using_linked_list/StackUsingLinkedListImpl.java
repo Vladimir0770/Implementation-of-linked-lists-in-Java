@@ -7,12 +7,8 @@ public class StackUsingLinkedListImpl<E> implements StackUsingLinkedList<E> {
 
     @Override
     public void push(E e) {
-        if (isEmpty()) {
-            top = new Node<>(e, null);
-        } else {
-            Node<E> node = new Node<>(e, top);
-            top = node;
-        }
+        Node<E> node = new Node<>(e, top);
+        top = node;
         size++;
     }
 
@@ -24,7 +20,7 @@ public class StackUsingLinkedListImpl<E> implements StackUsingLinkedList<E> {
 
     @Override
     public void top() {
-
+        System.out.println(top);
     }
 
     @Override
@@ -32,10 +28,17 @@ public class StackUsingLinkedListImpl<E> implements StackUsingLinkedList<E> {
         return top == null;
     }
 
-    // TODO implement method only using the stack methods
     @Override
     public void display() {
-
+        if (!isEmpty()) {
+            Node<E> temp = top;
+            while (temp != null) {
+                System.out.print(temp.item + "->");
+                temp = temp.next;
+            }
+        } else {
+            System.out.println("Stack is empty!");
+        }
     }
 
     // TODO implement method only using the stack methods

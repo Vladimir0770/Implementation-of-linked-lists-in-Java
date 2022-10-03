@@ -8,4 +8,11 @@ public class Node<E> {
         this.item = item;
         this.next = next;
     }
+
+    public Node() {}
+
+    @Override
+    public String toString() {
+        return item.toString();
+    }
 }

@@ -25,7 +25,16 @@ public class Main {
         stack.push(2);
         stack.push(3);
         stack.push(4);
-        System.out.println(stack.getSize());
+        System.out.println("Before reverse");
         stack.display();
+        System.out.println("The last element is: ");
+        stack.top();
+        System.out.println("After reverse");
+        stack.reverse();
+        stack.display();
+        System.out.print("Now the last element is: ");
+        stack.top();
+        stack.clear();
+        System.out.printf("Size after clearance: %d", stack.getSize());
     }
 }

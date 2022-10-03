@@ -35,15 +35,24 @@ public class StackUsingLinkedListImpl<E> implements StackUsingLinkedList<E> {
                 System.out.print(temp.item + "->");
                 temp = temp.next;
             }
+            System.out.println();
         } else {
             System.out.println("Stack is empty!");
         }
     }
 
-    // TODO implement method only using the stack methods
     @Override
     public void reverse() {
-
+        Node<E> prev = null;
+        Node<E> current = top;
+        Node<E> next;
+        while (current != null) {
+            next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+        top = prev;
     }
 
     @Override

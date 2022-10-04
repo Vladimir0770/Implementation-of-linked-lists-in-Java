@@ -1,8 +1,6 @@
 package com.company.main.doubly_linked_list;
 
-public class MyDoublyLinkedListImpl<E> implements MyDoublyLinkedList<E> {
-
-    //TODO create method to add the node to specific position
+public class DoublyLinkedListImpl<E> implements DoublyLinkedList<E> {
 
     private Node<E> head;
     private Node<E> tail;
@@ -11,48 +9,46 @@ public class MyDoublyLinkedListImpl<E> implements MyDoublyLinkedList<E> {
     @Override
     public void addFirst(E e) {
         Node<E> node = new Node<>(e);
-        if (this.size == 0)
-            this.head = this.tail = node;
+        if (size == 0)
+            head = tail = node;
         else {
-            node.next = this.head;
-            this.head.prev = node;
-            this.head = node;
+            node.next = head;
+            head.prev = node;
+            head = node;
         }
         size++;
     }
 
     @Override
-    public void addNode(int index, E e) {
-        if (index == 0) addFirst(e);
+    public void addNode(int position, E e) {
+        if (position == 0) addFirst(e);
 
-        if (index < size / 2) {
-            Node<E> current = head;
-            Node<E> next = current.next;
-            for (int i = 0; i < size; i++) {
-                next = getNodeUtil(index, e, next, i);
+        Node<E> current;
+        if (position <= size / 2) {
+            current = head;
+            for (int i = 0; i < position - 1; i++) {
+                current = current.next;
             }
         } else {
-            Node<E> current = tail;
-            Node<E> next = current.next;
-            for (int i = size; i > (size / 2); i--) {
-                next = getNodeUtil(index, e, next, i);
+            current = tail;
+            for (int i = size - 1; i > position - 1; i--) {
+                current = current.prev;
             }
         }
+        utilMethodForInsertNodeInTheMiddle(current, e);
         size++;
     }
 
-    private Node<E> getNodeUtil(int index, E e, Node<E> next, int i) {
-        Node<E> current;
-        current = next.prev;
-        next = next.next;
-        if (index == i) {
-            Node<E> node = new Node<>(current, e, next);
-            next.prev = node;
-            current.next = node;
-        }
-        return next;
+    private void utilMethodForInsertNodeInTheMiddle(Node<E> currentNode, E itemForNewNode) {
+        Node<E> newNode = new Node<>(itemForNewNode);
+        Node<E> currentPrevTmp = currentNode.prev;
+        currentNode.prev = newNode;
+        newNode.next = currentNode;
+        newNode.prev = currentPrevTmp;
+        currentPrevTmp.next = newNode;
     }
 
+    // This implementation add node in the end of the collection
     @Override
     public void addNode(E e) {
         if (head == null) return;
@@ -65,6 +61,7 @@ public class MyDoublyLinkedListImpl<E> implements MyDoublyLinkedList<E> {
         size++;
     }
 
+    // util method for method deleteNodeAtGivePosition(int position)
     private void deleteNode(Node<E> del) {
         if (head == null || del == null)
             return;
@@ -78,7 +75,6 @@ public class MyDoublyLinkedListImpl<E> implements MyDoublyLinkedList<E> {
         if (del.prev != null)
             del.prev.next = del.next;
 
-        del = null;
         size--;
     }
 
@@ -87,14 +83,19 @@ public class MyDoublyLinkedListImpl<E> implements MyDoublyLinkedList<E> {
         if (head == null || position <= 0)
             return;
 
-        Node<E> current = head;
-
-        for (int i = 1; current != null && i < position; i++) {
-            current = current.next;
+        Node<E> current;
+        if (position <= size / 2) {
+            current = head;
+            for (int i = 1; current != null && i < position; i++) {
+                current = current.next;
+            }
+        } else {
+            current = tail;
+            for (int i = size - 1; current != null && i > position - 1 ; i--) {
+                current = current.prev;
+            }
         }
-
-        if (current == null)
-            return;
+        if (current == null) return;
         deleteNode(current);
     }
 

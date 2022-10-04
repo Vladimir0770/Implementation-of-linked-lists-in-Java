@@ -19,7 +19,7 @@ public class StackUsingLinkedListImpl<E> implements StackUsingLinkedList<E> {
 
     @Override
     public void top() {
-        System.out.println(top);
+        System.out.printf("The last element in the stack is %s\n", top);
     }
 
     @Override

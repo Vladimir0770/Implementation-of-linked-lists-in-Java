@@ -7,12 +7,12 @@ package com.company.main.doubly_linked_list;
  * @param <E> the type of elements held in this collection
  */
 
-public interface MyDoublyLinkedList<E> {
+public interface DoublyLinkedList<E> {
     /**
      * Inserts the specified element at the specified position, if {@code index == 0} this method
      * delegates the call to {@link #addFirst}
      *
-     * @param index position in the collection on which element will be inserted
+     * @param position in the collection on which element will be inserted
      * @param e element to be inserted to this list
      * @throws NullPointerException if the specified element is null
      * and this collection does not permit null elements
@@ -23,7 +23,7 @@ public interface MyDoublyLinkedList<E> {
      * @throws IndexOutOfBoundsException if the index is out of range
      * ({@code index < 0 || index > size()})
      */
-    void addNode(int index, E e);
+    void addNode(int position, E e);
 
     /**
      * Inserts an element as the last element in the list

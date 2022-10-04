@@ -21,7 +21,11 @@ public class DoublyLinkedListImpl<E> implements DoublyLinkedList<E> {
 
     @Override
     public void addNode(int position, E e) {
-        if (position == 0) addFirst(e);
+        if (position == 0) {
+            addFirst(e);
+            return;
+        }
+
 
         Node<E> current;
         if (position <= size / 2) {
@@ -91,7 +95,7 @@ public class DoublyLinkedListImpl<E> implements DoublyLinkedList<E> {
             }
         } else {
             current = tail;
-            for (int i = size - 1; current != null && i > position - 1 ; i--) {
+            for (int i = size - 1; current != null && i > position - 1; i--) {
                 current = current.prev;
             }
         }

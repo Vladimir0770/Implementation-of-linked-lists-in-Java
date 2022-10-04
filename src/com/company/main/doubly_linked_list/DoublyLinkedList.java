@@ -3,8 +3,8 @@ package com.company.main.doubly_linked_list;
 /**
  * An interface for doubly linked lists implementation.
  * This interface implements generics programming
- * @author Volodymyr Khivrych
  * @param <E> the type of elements held in this collection
+ * @author Volodymyr Khivrych
  */
 
 public interface DoublyLinkedList<E> {
@@ -79,6 +79,4 @@ public interface DoublyLinkedList<E> {
     void addFirst(E e);
 
     int getSize();
-    // TODO create a Node generic class, but it's better to create directly in the class of Impl
-    //  if it goes hard, look example in the java.util.LinkedList
 }
